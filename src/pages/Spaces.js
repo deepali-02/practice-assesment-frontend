@@ -12,32 +12,32 @@ import Space from "../components/Space";
 export default function Spaces() {
   const dispatch = useDispatch();
   const spaces = useSelector(selectSpace);
+  
 
   useEffect(() => {
     dispatch(fetchSpaces);
-  }, []);
+  }, [dispatch]);
 
   return (
+    //<h1>Hello</h1>
     <>
       <Jumbotron>
         <h1>Spaces</h1>
       </Jumbotron>
       <Container>
-        {!spaces
-          ? "Loading"
-          : spaces.map((s) => {
-              return (
-                <Space
-                  Key={s.id}
-                  id={s.id}
-                  title={s.title}
-                  description={s.description}
-                  backgroundColor={s.backgroundColor}
-                  color={s.color}
-                  showLink={true}
-                />
-              );
-            })}
+        {spaces.map((s) => {
+          return (
+            <Space
+              Key={s.id}
+              id={s.id}
+              title={s.title}
+              description={s.description}
+              backgroundColor={s.backgroundColor}
+              color={s.color}
+              showLink={true}
+            />
+          );
+        })}
       </Container>
     </>
   );
